@@ -1,0 +1,36 @@
+--EJERCICIOS
+/*
+1.MONSTRAR TODOS LOS "CUSTOMERS" QUE TENGAN UNA DIRECCION DE "Av".
+2.MONSTRAR TODOS LOS "CUSTOMERS" que no pertenescan al pais "Brazil"
+3.Monstrar todos los "CUSTOMERS" que no tengan una region "NULL" Y que el fax no sea "NULL"
+4.Contar todos las "Orders" agrupando por el "ShipCountry"
+5.Contar todos las "Orders" agrupando por el "ShipCity"
+6.Sumar todos los "UnitPrice" de los "Products" agrupando por "Categoryid"
+*/
+
+EJERCICIO 1
+SELECT * FROM Customers
+where Address LIKE 'Av.%'
+
+EJERCICIO 2
+SELECT * FROM Customers
+where Country != 'Brazil'
+
+EJERCICIO 3
+SELECT * FROM Customers
+where region is not null and fax is not null;
+
+EJERCICIO 4
+SELECT ShipCountry, COUNT(*)
+FROM Orders
+GROUP BY ShipCountry;
+
+EJERCICIO 5
+SELECT ShipCity, COUNT(*)
+FROM Orders
+GROUP BY ShipCity;
+
+EJERCICIO 6
+SELECT CategoryID, SUM(UnitPrice)
+FROM Products
+GROUP BY CategoryID;
