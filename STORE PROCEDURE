@@ -1,0 +1,58 @@
+CREATE DATABASE MiBaseDeDatos;
+GO
+USE MiBaseDeDatos;
+GO
+
+--CREAR UN STORE PROCEDURE PARA SUMAR
+--Ejmplo: Como crear un procedimiento almacenado
+
+CREATE PROC SumarNumeros
+(  
+@numero1 int,
+@numero2 int
+)
+AS
+         PRINT''+@numero1 + @numero2+'';
+
+--Ejemplo: Ejecutar el procedimiento almacenado creado.
+EXEC SumarNumeros 100,200;
+
+--CREAR 4 PROCEDIMIENTOS ALMACENADOS: RESTAR, MULTIPLICAR, DIVIDIR, POTENCIAR.
+
+CREATE PROC RestarNumeros
+(  
+@numero1 int,
+@numero2 int
+)
+AS 
+       PRINT''+@numero1 - @numero2+'';
+EXEC RestarNumeros 100,200;   
+
+CREATE PROC MultiplicarNumeros
+(  
+@numero1 int,
+@numero2 int
+)
+AS 
+         PRINT''+@numero1 * @numero2+'';
+EXEC MultiplicarNumeros 100,200;
+
+CREATE PROC DividirNumeros
+(  
+@numero1 int,
+@numero2 int
+)
+AS 
+      PRINT''+@numero1 / @numero2+'';
+
+EXEC DividirNumeros 100,4;
+
+CREATE PROC PotenciarNumeros
+(  
+@numero1 float,
+@numero2 float
+)
+AS
+   PRINT''+POWER(@numero1, @numero2)+'';
+
+EXEC PotenciarNumeros 2,3;
