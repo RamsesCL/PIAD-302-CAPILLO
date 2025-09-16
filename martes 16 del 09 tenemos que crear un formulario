@@ -1,0 +1,33 @@
+package israel;
+
+import java.sql.*;
+
+public class Israel {
+
+    public static void main(String[] args) {
+        String jdbc_url = "jdbc:sqlserver://localhost:1433;encrypt=false;databaseName=Northwind";
+
+        try (Connection cn = DriverManager.getConnection(jdbc_url, "sa", "1234");
+             Statement stmt = cn.createStatement();
+             ResultSet result = stmt.executeQuery("SELECT * FROM Products")) {
+
+            if (cn != null) {
+                System.out.println("Conexion exitosa");
+            }
+
+            while (result.next()) {
+                System.out.println(
+                    result.getInt("ProductID") + " - " +
+                    result.getString("ProductName") + " - " +
+                    result.getInt("SupplierID") + " - " +
+                    result.getInt("CategoryID") + " - " +
+                    result.getDouble("UnitPrice")
+                );
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Error connection to DB or query execution");
+            ex.printStackTrace();
+        }
+    }
+}
